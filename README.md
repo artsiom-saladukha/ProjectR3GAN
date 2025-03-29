@@ -23,17 +23,19 @@ Download and install the package using package installer for Python (in the offi
 
 ### Running the training pipeline
 NOT IMPLEMENTED YET
+
 The training process can be initiated with the following line (after you successfully installed the package):
-	(env_r3gan) $ python training.py
+	
+ 	(env_r3gan) $ python training.py
 
 ### Generating a sample
 NOT IMPLEMENTED YET
+
 To receive the generated image sample write the following line: 
-        (env_r3gan) $ python generate.py
+        
+	(env_r3gan) $ python generate.py
 
 
 ## Authors
-  - **Artsiom Saladukha** - *TODO*
-    [artsiom-saladukha](https://github.com/artsiom-saladukha)
-  - **Daniil Domnin** - *TODO*    
-    [DaniilDomnin](https://https://github.com/DaniilDomnin)
+  - **Artsiom Saladukha** - [artsiom-saladukha](https://github.com/artsiom-saladukha)
+  - **Daniil Domnin** - [DaniilDomnin](https://https://github.com/DaniilDomnin)
