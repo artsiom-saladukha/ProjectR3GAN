@@ -2,7 +2,20 @@
 This repository contains the implementation of the R3-GAN pipeline from the paper "The GAN is dead; long live the GAN! A Modern Baseline GAN".
 As well as the results of various experiments related to it.
 
-Link to the source article: https://arxiv.org/abs/2501.05441
+There is a widely-spread claim that GANs are difficult to train, and GAN architectures in the literature are littered with empirical tricks.
+The R3GAN research provide evidence against this claim and build a modern GAN baseline in a more principled manner.
+First, researchers derive a well-behaved regularized relativistic GAN loss that addresses issues of mode dropping and non-convergence that were previously tackled via a bag of ad-hoc tricks.
+The loss is analyzed mathematically and it is proven that it admits local convergence guarantees, unlike most existing relativistic losses. 
+Second, new loss allows to discard all ad-hoc tricks and replace outdated backbones used in common GANs with modern architectures.
+Using StyleGAN2 as an example, the roadmap of simplification and modernization presented that results in a new minimalist baseline -- R3GAN.
+Despite being simple, it surpasses StyleGAN2 on FFHQ, ImageNet, CIFAR, and Stacked MNIST datasets, and compares favorably against SOTA GANs and even diffusion models.
+
+"The relativistic discriminator: a key element missing from standard GAN" is the article in which principles used in R3GAN pipeline are described.
+Primarily the new approach to objective function.
+
+Link to the source article (can also be found within the repo (r3gan_article.pdf)): https://arxiv.org/abs/2501.05441
+
+Link to the relativistic GAN loss article (can also be found within the repo (rel_discr_article.pdf)): https://arxiv.org/abs/1807.00734 
 
 Link to the source code: https://github.com/brownvc/R3GAN
 
