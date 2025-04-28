@@ -216,11 +216,25 @@ def training_loop(
     loss = dnnlib.util.construct_class_by_name(G=G, D=D, augment_pipe=augment_pipe, **loss_kwargs) # subclass of training.loss.Loss
     phases = []
     
+    # Fix for the proper loading of the Discriminator parameters
+    D_opt_kwargs = dict(
+      class_name='torch.optim.Adam',
+      lr=0.002,
+      betas=(0.0, 0.99),
+      eps=1e-8
+    )
     opt = dnnlib.util.construct_class_by_name(params=D.parameters(), **D_opt_kwargs)
     if resume_pkl is not None:
         opt.load_state_dict(remap_optimizer_state_dict(resume_data['D_opt_state'], device))
     phases += [dnnlib.EasyDict(name='D', module=D, opt=opt, batch_gpu=d_batch_gpu)]
-    
+
+    # Fix for the proper loading of the Generator parameters
+    G_opt_kwargs = dict(
+      class_name='torch.optim.Adam',
+      lr=0.002,
+      betas=(0.0, 0.99),
+      eps=1e-8
+    )
     opt = dnnlib.util.construct_class_by_name(params=G.parameters(), **G_opt_kwargs)
     if resume_pkl is not None:
         opt.load_state_dict(remap_optimizer_state_dict(resume_data['G_opt_state'], device))
