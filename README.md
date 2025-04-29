@@ -13,11 +13,17 @@ Despite being simple, it surpasses StyleGAN2 on FFHQ, ImageNet, CIFAR, and Stack
 "The relativistic discriminator: a key element missing from standard GAN" is the article in which principles used in R3GAN pipeline are described.
 Primarily the new approach to objective function.
 
-Link to the source article (can also be found within the repo (r3gan_article.pdf)): https://arxiv.org/abs/2501.05441
+Link to the source article (can also be found within the repo (r3gan_article.pdf)):
 
-Link to the relativistic GAN loss article (can also be found within the repo (rel_discr_article.pdf)): https://arxiv.org/abs/1807.00734 
+https://arxiv.org/abs/2501.05441
 
-Link to the source code: https://github.com/brownvc/R3GAN
+Link to the relativistic GAN loss article (can also be found within the repo (rel_discr_article.pdf)):
+
+https://arxiv.org/abs/1807.00734 
+
+Link to the source code:
+
+https://github.com/brownvc/R3GAN
 
 ## Getting Started
 These instructions will give you a hint on how to install and run our R3GAN replica, as well as additional information on this repo insights.
@@ -58,44 +64,25 @@ It is expected that introducing proper normalization to the model will allow to 
 We are interested to see whether adding attention blocks to a convolutional network (BigGAN, diffusion UNet) or
 using a pure transformer architecture (DiT) will result in stronger performance, given the impressive results of EDM2 (UNet).
 
-* Researchers tried removing the activation function after the 3×3 grouped convolution in each residual
-block as modern architectures typically do not apply non-linearity after depthwise convolution. This worsened FID performance
-
-* Researchers tried Pixel-Shuffle/Unshuffle for changing the resolution of the activation maps and found that without low-pass filtering,
-this led to high frequency artifacts similar to checkerboard artifacts even though Pixel-Shuffle does not have the uneven overlap problem
-that transposed convolution does. Note that bilinear resampling is equivalent to applying channel duplication/averaging
-with Pixel-Shuffle/Unshuffle in conjunction with a low-pass kernel. 
-It might be interesting in future studies to explore inplace resampling filters that apply a low-pass filtered Pixel-Shuffle/Unshuffle operation 
-on top of a learned function that changes the number of channels.
-
-
-### Short summary on what this research covers:
+Short summary on what this research covers:
 * Replicate the results described in the article;
-* Experiment with different image output sizes and check how quality of it changes with increase;
 * Experiment with different ad-hoc techniques used in classic GAN modifications to determine how well do they fit this architecture;
-* Experiment with style-injection;
 * Experiment with conditional generation, explore the latent space of generator.
 
 ### Installing the packages
-Download and install the package using package installer for Python (in the official R3-GAN repo it is mentioned that they ran all pipelines with StyleGAN3-needed packages only):
+Download and install the packages (in the official R3-GAN repo it is mentioned that they ran all pipelines with StyleGAN3-needed packages only, we encountered a problemm that not all needed packages were listed).
+All experiments were completed within the Google Colab and Kaggle environment. All Jupyter-notebooks include complete installation pipeline.
 
-	$ conda env create -f environment.yml
-	$ conda activate env_r3gan
+## Contribution
+Artsiom Saladukha:
+* Latent space interpolation exploration (pre-trained and CIFAR-trained models);
+* GAN backbone complexity reduction research;
+* Traditional GAN ad-hoc techniques research and adaptation;
 
-### Running the training pipeline
-NOT IMPLEMENTED YET
-
-The training process can be initiated with the following line (after you successfully installed the package):
-	
- 	(env_r3gan) $ python training.py
-
-### Generating a sample
-NOT IMPLEMENTED YET
-
-To receive the generated image sample write the following line: 
-
-	(env_r3gan) $ python generate.py
-
+Daniil Domnin:
+* Article results replication;
+* GAN backbone complexity reduction research;
+* Latent space interpolation enforcement methods research;
 
 ## Authors
   - **Artsiom Saladukha** - [artsiom-saladukha](https://github.com/artsiom-saladukha)
